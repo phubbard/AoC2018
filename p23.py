@@ -1,4 +1,4 @@
-from utils import get_data_lines
+from utils import get_data_lines, manhattan_distance
 
 
 def parse_nanobot(data_line):
@@ -21,23 +21,16 @@ def find_strongest(data):
     return data[cur_idx]
 
 
-def manhattan_distance(p1, p2):
-    return sum([abs(p1[x] - p2[x]) for x in range(len(p1))])
-
-
 def in_range(bot, origin, distance):
-    return distance <= manhattan_distance(bot[0], origin[0])
+    return distance >= manhattan_distance(bot, origin)
 
 
 if __name__ == '__main__':
     sample, full = get_data_lines(23)
-    data = []
-    for line in sample:
-        data.append(parse_nanobot(line))
-
-    find_strongest(data)
-    # full_data = []
-    # for line in full:
-    #     full_data.append(parse_nanobot(line))
-    print(data)
-    # print(full_data)
+    for dataset in [sample, full]:
+        data = []
+        for line in dataset:
+            data.append(parse_nanobot(line))
+        main_bot = find_strongest(data)
+        in_range_bots = [x for x in data if in_range(x[0], main_bot[0], main_bot[1])]
+        print(f'{len(in_range_bots)=}')

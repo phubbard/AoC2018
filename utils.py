@@ -2,6 +2,10 @@
 from itertools import permutations, combinations, combinations_with_replacement
 
 
+def manhattan_distance(p1, p2):
+    return sum([abs(p1[x] - p2[x]) for x in range(len(p1))])
+
+
 def find_permutations(input_chars, length=8):
     return permutations(input_chars, r=length)
 
