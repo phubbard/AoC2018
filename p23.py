@@ -28,9 +28,7 @@ def in_range(bot, origin, distance):
 if __name__ == '__main__':
     sample, full = get_data_lines(23)
     for dataset in [sample, full]:
-        data = []
-        for line in dataset:
-            data.append(parse_nanobot(line))
+        data = [parse_nanobot(x) for x in dataset]
         main_bot = find_strongest(data)
         in_range_bots = [x for x in data if in_range(x[0], main_bot[0], main_bot[1])]
         print(f'{len(in_range_bots)=}')
