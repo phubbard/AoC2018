@@ -1,7 +1,7 @@
-# scikit-image
-numpy==1.24.1
-networkx
-pydot
-notebook
-matplotlib
-seaborn
+# # scikit-image
+# numpy==1.24.1
+# networkx
+# pydot
+# notebook
+# matplotlib
+# seaborn
